@@ -1,9 +1,41 @@
-<div> 
-  FRIENDS
-</div>
+<div class="container">
+  <div class="well"> 
+    <h1 id="title">FRIENDS</h1>
+  </div>
 
-<div>
-  <% @friends.each do |friend| %>
-    <%= friend.first_name %>
-  <% end %>
+  <div class="well">
+    <div class="row">
+      <div class="table-responsive">
+        <table class="table" id="friends">
+          <thead>
+            <tr>
+              <th>FRIENDS</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>username</th>
+              <th>Emails</th>
+              <th>Numbers</th>
+              <th>Tags</th>
+              <th>Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @friends.each do |friend| %>
+              <tr>
+                <td>[gravatar]</td>
+                <td><%= friend.first_name %></td>
+                <td><%= friend.last_name %></td>
+                <td><%= friend.username %></td>
+                <td>[emails]</td>
+                <td>[numbers]</td>
+                <td>[tags]</td>
+                <td>[edit]</td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        
+      </div>
+    </div>
+  </div>
 </div>
