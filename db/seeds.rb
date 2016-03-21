@@ -9,3 +9,8 @@
 Friend.create(first_name: 'Reinhardt', last_name: 'Rein', username: 'reinhardt')
 Friend.create(first_name: 'Zaheer', last_name: 'Laghima', username: 'zlaghima')
 Friend.create(first_name: 'Jake', last_name: 'Sully', username: 'jsully')
+
+Node.create(title: 'wake', node_type: 'action', content: 'slowly get out of bed')
+Node.create(title: 'eat', node_type: 'action', content: 'eggs lentils veggies')
+Node.create(title: 'exercise', node_type: 'action', content: 'stretch push-ups legs kbs')
+Node.create(title: 'shower', node_type: 'action', content: 'hot warm cold')

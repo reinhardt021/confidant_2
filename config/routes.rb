@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'friends#index'
 
   resources :friends
+  resources :nodes
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

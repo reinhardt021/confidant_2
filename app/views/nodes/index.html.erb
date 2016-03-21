@@ -1,0 +1,114 @@
+<div class="container">
+  <div class="well text-center"> 
+    <div class="row">
+      <a href="/">
+        <h1 id="title">
+          <strong>
+            NODES
+          </strong>
+        </h1>
+      </a>
+      <div class="btn-group">
+        <button class="btn btn-primary" id="list">
+          List All
+        </button>
+        <button class="btn btn-primary" id="newSearch">
+          Search
+        </button>
+        <button class="btn btn-primary" id="addNew">
+          Add New
+        </button>
+      </div>
+    </div>
+    <hr/>
+    <div class="row searchForm">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="input-group">
+          <input type="text" class="form-control" id="search" placeholder="Search..." />
+          <span class="input-group-btn">
+            <button class="btn btn-default" id="find" type="button">
+              ?
+            </button>
+          </span>
+        </div>
+        <div id="error-message">
+        </div>
+      </div>
+    </div>
+    <hr/>
+    <div class="row addForm">
+      <form class="form-inline" id="newContactForm">
+        <div class="form-group">
+          <label class="sr-only" for="">
+            First Name
+          </label>
+          <input type="text" class="form-control" id="" placeholder="first name" />
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="">
+            Last Name
+          </label>
+          <input type="text" class="form-control" id="" placeholder="last name" />
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="">
+            username
+          </label>
+          <input type="text" class="form-control" id="" placeholder="username" />
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="">
+            Email
+          </label>
+          <input type="email" class="form-control" id="" placeholder="email" />
+        </div>
+        <button type="submit" class="btn btn-default" id="add">
+          <strong>
+            +
+          </strong>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="well">
+    <div class="row">
+      <div class="table-responsive">
+        <table class="table" id="friends">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Content</th>
+              <th>Type</th>
+              <th>Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @nodes.each do |node| %>
+              <tr>
+                <td><%= node.title %></td>
+                <td><%= node.content %></td>
+                <td><%= node.node_type %></td>
+                <td>
+                  <i class="fa fa-pencil"></i>
+                  <%= link_to 'Edit', 
+                    edit_node_path(node), 
+                    class: "btn btn-primary edit" 
+                  %>
+                  <i class="fa fa-trash"></i>
+                  <%= link_to 'Delete', 
+                    "/node/#{node.id}", 
+                    method: :delete, 
+                    data: { confirm: 'Are you sure?' }, 
+                    class: "btn btn-primary delete" 
+                  %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        
+      </div>
+    </div>
+  </div>
+</div>
