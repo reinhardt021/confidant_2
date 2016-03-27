@@ -71,44 +71,32 @@
     </div>
   </div>
 
-  <div class="well">
-    <div class="row">
-      <div class="table-responsive">
-        <table class="table" id="friends">
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Content</th>
-              <th>Type</th>
-              <th>Edit</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @nodes.each do |node| %>
-              <tr>
-                <td><%= node.title %></td>
-                <td><%= node.content %></td>
-                <td><%= node.node_type %></td>
-                <td>
-                  <i class="fa fa-pencil"></i>
-                  <%= link_to 'Edit', 
-                    edit_node_path(node), 
-                    class: "btn btn-primary edit" 
-                  %>
-                  <i class="fa fa-trash"></i>
-                  <%= link_to 'Delete', 
-                    "/node/#{node.id}", 
-                    method: :delete, 
-                    data: { confirm: 'Are you sure?' }, 
-                    class: "btn btn-primary delete" 
-                  %>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-        
+  <% @nodes.each do |node| %>
+    <div class="well nodes">
+      <h3 alt='title'>
+        <%= node.title %>
+      </h3>
+      <p alt='content'>
+        <%= node.content %>
+      </p>
+      <small alt='node_type'>
+        type: <%= node.node_type %>
+      </small>
+      <div>
+        <i class="fa fa-pencil"></i>
+        <%= link_to 'Edit',
+          edit_node_path(node),
+          class: 'btn btn-primary edit'
+        %>
+        <i class="fa fa-trash"></i>
+        <%= link_to 'Delete',
+          "/node/#{node.id}",
+          method: :delete,
+          data: { confirm: 'Are you sure?' },
+          class: 'btn btn-primary delete'
+        %>
       </div>
     </div>
-  </div>
+  <% end %>
+
 </div>
