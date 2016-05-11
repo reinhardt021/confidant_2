@@ -11,12 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160321022441) do
+ActiveRecord::Schema.define(version: 20160511144646) do
 
-  create_table "friends", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "username"
+  create_table "friendships", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -25,6 +24,14 @@ ActiveRecord::Schema.define(version: 20160321022441) do
     t.string   "title"
     t.string   "node_type"
     t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "username"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -74,7 +74,7 @@
   <% @nodes.each do |node| %>
     <div class="well nodes">
       <h3 alt='title'>
-        <%= node.title %>
+        <%= node.title %> [<%= node.id %>]
       </h3>
       <p alt='content'>
         <%= node.content %>
@@ -82,19 +82,30 @@
       <small alt='node_type'>
         type: <%= node.node_type %>
       </small>
+      <ul>
+        <% node.connected.each do |node| %>
+          <li></li>
+        <% end %>
+      </ul>
       <div>
         <i class="fa fa-pencil"></i>
         <%= link_to 'Edit',
           edit_node_path(node),
-          class: 'btn btn-primary edit'
+          class: 'edit'
         %>
         <i class="fa fa-trash"></i>
         <%= link_to 'Delete',
           "/node/#{node.id}",
           method: :delete,
           data: { confirm: 'Are you sure?' },
-          class: 'btn btn-primary delete'
+          class: 'delete'
         %>
+      </div>
+      <div>
+        <input type="number" placeholder="node id" />
+        <button class="btn btn-primary">
+          connect
+        </button>
       </div>
     </div>
   <% end %>

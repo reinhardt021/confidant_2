@@ -1,6 +1,7 @@
 <div class="container">
   <div class="well text-center"> 
     <div class="row">
+      <% title "User List" %>
       <a href="/">
         <h1 id="title">
           <strong>
@@ -100,6 +101,7 @@
               <th>Numbers</th>
               <th>Teams</th>
               <th>Edit</th>
+              <th>Confidants</th>
             </tr>
           </thead>
           <tbody>
@@ -125,6 +127,9 @@
                     data: { confirm: 'Are you sure?' }, 
                     class: "btn btn-primary delete" 
                   %>
+                </td>
+                <td>
+                  <%= link_to "Add Confidant", friendships_path, :method => :post %>
                 </td>
               </tr>
             <% end %>
