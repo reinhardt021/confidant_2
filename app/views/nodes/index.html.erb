@@ -72,7 +72,7 @@
   </div>
 
   <% @nodes.each do |node| %>
-    <div class="well nodes">
+    <div class="well nodes" id="<%= node.id %>">
       <h3 alt='title'>
         <%= node.title %> [<%= node.id %>]
       </h3>
