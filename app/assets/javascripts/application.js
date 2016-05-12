@@ -40,10 +40,10 @@ $(function () {
     mousePosition.last.y = mousePosition.y;
     mousePosition.x = event.pageX;
     mousePosition.y = event.pageY;
-    console.log('the cursor coordinates moved from { x: ' + mousePosition.last.x +
-      ', y: ' + mousePosition.last.y + ' } >>> { x: ' + mousePosition.x +
-      ', y: ' + mousePosition.y + ' }'
-    );
+    // console.log('the cursor coordinates moved from { x: ' + mousePosition.last.x +
+    //   ', y: ' + mousePosition.last.y + ' } >>> { x: ' + mousePosition.x +
+    //   ', y: ' + mousePosition.y + ' }'
+    // );
 
     if (el) {
       elPosition.last.x = elPosition.x;
@@ -56,16 +56,16 @@ $(function () {
         top: elPosition.y 
       });
 
-      console.log(
-        'the element coordinates moved from { x: ' + mousePosition.last.x +
-        ', y: ' + mousePosition.last.y + 
-        ' } >>> { x: ' + mousePosition.x +
-        ', y: ' + mousePosition.y + ' }'
-      );
+      // console.log(
+      //   'the element coordinates moved from { x: ' + mousePosition.last.x +
+      //   ', y: ' + mousePosition.last.y + 
+      //   ' } >>> { x: ' + mousePosition.x +
+      //   ', y: ' + mousePosition.y + ' }'
+      // );
     }
   });
 
-  $('div').mousedown(function (event) {
+  $('.nodes').on('mousedown', function (event) {
     event.stopPropagation();
     el = $(this);
     var position = el.offset();
@@ -74,9 +74,8 @@ $(function () {
     elPosition.y = position.top;
   });
 
-  $('div').mouseup(function (event) {
+  $('.nodes').on('mouseup', function (event) {
     event.stopPropagation();
-    console.log('mouseup event');
 
     elPosition = {
       x: -1,
