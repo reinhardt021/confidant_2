@@ -36,7 +36,24 @@
   margin-bottom: 0;
 }
 
+#node-title {
+  font-size: 4em;
+  margin: 0;
+  display: inline-block;
+  align: left;
+}
+
+#node-head {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.addForm {
+  align: center;
+}
+
 .nodes {
-  position: absolute;
-  
+  // check node.css.scss
 }

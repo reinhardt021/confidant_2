@@ -1,28 +1,58 @@
 <div class="container">
-  <div class="well text-center"> 
+  <div class="well text-center" id="node-head"> 
     <div class="row">
-      <a href="/">
-        <h1 id="title">
-          <strong>
-            NODES
-          </strong>
-        </h1>
-      </a>
-      <div class="btn-group">
-        <button class="btn btn-primary" id="list">
-          List All
-        </button>
-        <button class="btn btn-primary" id="newSearch">
-          Search
-        </button>
-        <button class="btn btn-primary" id="addNew">
-          Add New
-        </button>
+      <div class="col-md-2">
+        <a href="/">
+          <h1 id="node-title">
+            <strong>
+              NODES
+            </strong>
+          </h1>
+        </a>  
       </div>
-    </div>
-    <hr/>
-    <div class="row searchForm">
-      <div class="col-md-6 col-md-offset-3">
+      <div class="col-md-6 col-md-offset-1 addForm text-center">
+        <%= form_for @node, class: "form-inline", id: "newNodeForm" do |f| %>
+          <div class="form-group">
+            <%= f.label :title, class: "sr-only" %>
+            <%= f.text_field :title, class: "form-control", id: "title", placeholder: "title" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :content, class: "sr-only" %>
+            <%= f.text_field :content, class: "form-control", id: "content", placeholder: "content" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :node_type, class: "sr-only" %>
+            <%= f.text_field :node_type, class: "form-control", id: "node_type", placeholder: "node_type" %>
+          </div>
+          <%= f.submit "+", class: "btn btn-default", id: "add" %>
+        <% end %>
+        <!-- <form class="form-inline" id="newNodeForm">
+          <div class="form-group">
+            <label class="sr-only" for="">
+              Title
+            </label>
+            <input type="text" class="form-control" id="" placeholder="title" />
+          </div>
+          <div class="form-group">
+            <label class="sr-only" for="">
+              Content
+            </label>
+            <input type="text" class="form-control" id="" placeholder="content" />
+          </div>
+          <div class="form-group">
+            <label class="sr-only" for="">
+              Type
+            </label>
+            <input type="text" class="form-control" id="" placeholder="type" />
+          </div>
+          <button type="submit" class="btn btn-default" id="add">
+            <strong>
+              +
+            </strong>
+          </button>
+        </form> -->
+      </div>
+      <div class="col-md-3 searchForm">
         <div class="input-group">
           <input type="text" class="form-control" id="search" placeholder="Search..." />
           <span class="input-group-btn">
@@ -35,45 +65,11 @@
         </div>
       </div>
     </div>
-    <hr/>
-    <div class="row addForm">
-      <form class="form-inline" id="newContactForm">
-        <div class="form-group">
-          <label class="sr-only" for="">
-            First Name
-          </label>
-          <input type="text" class="form-control" id="" placeholder="first name" />
-        </div>
-        <div class="form-group">
-          <label class="sr-only" for="">
-            Last Name
-          </label>
-          <input type="text" class="form-control" id="" placeholder="last name" />
-        </div>
-        <div class="form-group">
-          <label class="sr-only" for="">
-            username
-          </label>
-          <input type="text" class="form-control" id="" placeholder="username" />
-        </div>
-        <div class="form-group">
-          <label class="sr-only" for="">
-            Email
-          </label>
-          <input type="email" class="form-control" id="" placeholder="email" />
-        </div>
-        <button type="submit" class="btn btn-default" id="add">
-          <strong>
-            +
-          </strong>
-        </button>
-      </form>
-    </div>
   </div>
 
   <% @nodes.each do |node| %>
     <div class="well nodes" id="<%= node.id %>">
-      <h3 alt='title'>
+      <h3 alt='title' contenteditable='true'>
         <%= node.title %> [<%= node.id %>]
       </h3>
       <p alt='content'>
@@ -81,11 +77,7 @@
       </p>
       <small alt='node_type'>
         type: <%= node.node_type %>
-      </small>
-      <ul>
-        <li>List connected nodes here</li>
-      </ul>
-      <div>
+      <!-- <div> -->
         <i class="fa fa-pencil"></i>
         <%= link_to 'Edit',
           edit_node_path(node),
@@ -98,12 +90,16 @@
           data: { confirm: 'Are you sure?' },
           class: 'delete'
         %>
-      </div>
+      <!-- </div> -->
+      </small>
       <div>
         <input type="number" placeholder="node id" />
         <button class="btn btn-primary">
           connect
         </button>
+        <ul>
+          <li>List connected nodes here</li>
+        </ul>
       </div>
     </div>
   <% end %>

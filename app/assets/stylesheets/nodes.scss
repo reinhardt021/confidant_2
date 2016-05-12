@@ -3,7 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .nodes {
+  position: absolute;
+
   width: 25%;
   float: left;
   border-radius: 35px;
+  border-width:0;
 }
