@@ -34,6 +34,23 @@ $(function () {
       y: -1
     }
   };
+  var nodes = $('.nodes');
+
+  for (var i = 0; i < nodes.length; i++) {
+    var position_x = nodes[i].dataset.x;
+    var position_y = nodes[i].dataset.y;
+
+    // sets the initial positions of the nodes
+    // [_] should do an initial to check to if the nodes have a value or not
+      // if they have a value then move them
+      // if they DONT have a value then leave at the default
+    if (position_x > 0 && position_y > 0) {
+      $(nodes[i]).offset({ 
+        left: position_x,
+        top:  position_y
+      });  
+    }
+  }
 
   $(document).mousemove(function (event) {
     mousePosition.last.x = mousePosition.x;
@@ -55,6 +72,8 @@ $(function () {
         left: elPosition.x,
         top: elPosition.y 
       });
+
+      // need to run AJAX call to update the position of the node in the database
 
       // console.log(
       //   'the element coordinates moved from { x: ' + mousePosition.last.x +
