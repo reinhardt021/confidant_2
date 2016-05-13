@@ -72,6 +72,16 @@ $(function () {
 
     elPosition.x = position.left;
     elPosition.y = position.top;
+
+    console.log('data-x == '+ el.data("x") + 
+      ' && data-y == ' + el.data("y")
+    );
+
+    console.log('data-x > 0 >> ' + ( el.data("x") > 0 ));
+    console.log('data-y > 0 >> ' + ( el.data("y") > 0 ));
+    console.log('data-x >> ', el.data("x"));
+    console.log('data-y >> ', el.data("y"));
+
   });
 
   $('.nodes').on('mouseup', function (event) {

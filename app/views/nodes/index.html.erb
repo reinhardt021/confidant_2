@@ -1,7 +1,9 @@
 <div class="row">
 
   <% @nodes.each do |node| %>
-    <div class="well nodes" id="<%= node.id %>">
+    <div class="well nodes" id="<%= node.id %>" 
+      data-x="<%= node.position_x ? node.position_x : -1 %>" 
+      data-y="<%= node.position_y ? node.position_y : -1 %>">
       <h3 alt='title' contenteditable='true'>
         <%= node.title %> [<%= node.id %>]
       </h3>
