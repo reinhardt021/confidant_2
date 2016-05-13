@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # root 'friends#index'
-  root 'users#index'
+  root 'nodes#index'
     # turned this off for now
   # resources :friends
   resources :users

@@ -1,0 +1,46 @@
+<header>
+  <div class="row top">
+
+    <div class="col-md-3 text-left">
+      <h2><strong><%= link_to "021", nodes_path %></strong></h2>
+    </div>
+
+    <div class="col-md-6 text-center">
+      <!-- render 'search' -->
+      <!-- test -->
+      <div id="error-message"></div>
+    </div>
+
+    <div class="col-md-3 text-right">
+      <div class="input-group">
+        <input type="text" class="form-control" id="search" placeholder="Search..." />
+        <span class="input-group-btn">
+          <button class="btn btn-default" id="find" type="button">
+            ?
+          </button>
+        </span>
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" id="add-node">
+            <strong>+</strong>
+          </button>
+        </span>
+      </div>
+      
+    </div>
+
+  </div>
+
+  <div class="col-sm-3 well text-right" id="create-node">
+    <%= form_for @node, class: "form-inline", id: "newNodeForm" do |f| %>
+      <%= f.label :title, class: "sr-only" %>
+      <%= f.text_field :title, class: "form-control", id: "title", placeholder: "title" %>
+      <%= f.label :content, class: "sr-only" %>
+      <%= f.text_field :content, class: "form-control", id: "content", placeholder: "content" %>
+      <small alt='node_type'>
+        <%= f.label :node_type, class: "sr-only" %>
+        <%= f.text_field :node_type, class: "form-control", id: "node_type", placeholder: "node_type" %>  
+      </small>
+      <%= f.submit "CREATE", class: "btn btn-default", id: "add" %>
+    <% end %> 
+  </div>
+</header>

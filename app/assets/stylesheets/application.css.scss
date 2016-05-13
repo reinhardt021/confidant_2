@@ -27,6 +27,27 @@
   background: image-url("symphony.png");
 }
 
+header {
+  padding: 0;
+  background-color: rgba(0,0,0,0.2);//whitesmoke;
+}
+
+.top {
+  padding: 5px;
+  justify-content: center;
+}
+
+.top h2 {
+  margin: 0;
+}
+
+#create-node {
+  float: right;
+  right: 0;
+
+  display: none;
+}
+
 .well {
   background-color: rgba(0, 0, 0, 0.2); 
 }
@@ -36,18 +57,15 @@
   margin-bottom: 0;
 }
 
-#node-title {
-  font-size: 4em;
-  margin: 0;
-  display: inline-block;
-  align: left;
-}
-
 #node-head {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+}
+
+#node-title {
+  margin: 0;
 }
 
 .addForm {

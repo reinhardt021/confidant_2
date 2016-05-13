@@ -16,7 +16,7 @@
 //= require_tree .
 
 $(function () {
-  console.log('hello wisconsin');
+  // console.log('hello wisconsin');
   var el = null;
   var mousePosition = { 
     x: -1, 
@@ -87,6 +87,11 @@ $(function () {
     };
 
     el = null;
+  });
+
+  $('#add-node').on('click', function () {
+    console.log('click works');
+    $('#create-node').toggle();
   });
 
 });
