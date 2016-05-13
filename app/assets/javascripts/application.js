@@ -40,10 +40,6 @@ $(function () {
     var position_x = nodes[i].dataset.x;
     var position_y = nodes[i].dataset.y;
 
-    // sets the initial positions of the nodes
-    // [_] should do an initial to check to if the nodes have a value or not
-      // if they have a value then move them
-      // if they DONT have a value then leave at the default
     if (position_x > 0 && position_y > 0) {
       $(nodes[i]).offset({ 
         left: position_x,
@@ -51,6 +47,8 @@ $(function () {
       });  
     }
   }
+
+  // find a way to resize the div in order to change the size of the text inside of it
 
   $(document).mousemove(function (event) {
     mousePosition.last.x = mousePosition.x;
@@ -74,6 +72,15 @@ $(function () {
       });
 
       // need to run AJAX call to update the position of the node in the database
+      $.ajax({
+        url: '/nodes/' + el.data("id"),
+        method: 'PUT',
+        datatype: 'json',
+        data: {
+          position_x: elPosition.x,
+          position_y: elPosition.y
+        }
+      });
 
       // console.log(
       //   'the element coordinates moved from { x: ' + mousePosition.last.x +
