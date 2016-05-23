@@ -17,8 +17,6 @@ class NodesController < ApplicationController
   def update
     @node = Node.find(params[:id])
 
-    byebug
-
     # the following line appears to be unable to find the :node
     #  thought it was an issue of the validations which i commented out
     #  still doesn't work and not sure why

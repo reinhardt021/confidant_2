@@ -1,19 +1,12 @@
 <div class="row">
 
   <% @nodes.each do |node| %>
-    <div class="well nodes" id="<%= node.id %>" 
+    <div class="well nodes" id="node_<%= node.id %>" 
       data-id="<%= node.id %>"
       data-x="<%= node.position_x ? node.position_x : -1 %>" 
       data-y="<%= node.position_y ? node.position_y : -1 %>">
-      <h3 alt='title' contenteditable='true'>
-        <%= node.title %> [<%= node.id %>]
-      </h3>
-      <p alt='content'>
-        <%= node.content %>
-      </p>
-      <small alt='node_type'>
-        type: <%= node.node_type %>
-      <!-- <div> -->
+      <p class="node-header" alt='title' contenteditable='false'>
+        <span class="node-title"><%= node.title %></span> [<span class="node-id"><%= node.id %></span>]
         <i class="fa fa-pencil"></i>
         <%= link_to 'Edit',
           edit_node_path(node),
@@ -26,9 +19,14 @@
           data: { confirm: 'Are you sure?' },
           class: 'delete'
         %>
-      <!-- </div> -->
+      </p>
+      <p class="node-content" alt='content'>
+        <%= node.content %>
+      </p>
+      <small class="node-type" alt='node_type'>
+        type: <%= node.node_type %>
       </small>
-      <div>
+      <div class="nodes-connected">
         <input type="number" placeholder="node id" />
         <button class="btn btn-primary">
           connect

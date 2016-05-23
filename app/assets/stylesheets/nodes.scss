@@ -4,15 +4,34 @@
 
 .well.nodes {
   position: absolute;
-
   top: 50px;
   left: 5px;
   width: 300px;
   float: left;
-  border-radius: 35px;
+  border-radius: 20px;
   border-width:0;
 
-  color: grey;
-
   background-color: rgba(0, 0, 0, 0.9); 
+
+  color: silver;
+}
+
+.node-header {
+  color: dimgrey;
+}
+
+.node-title {
+  color: dimgrey;
+}
+
+.node-content {
+  font-size: 1.5em;
+}
+
+.node-type {
+  color: dimgrey;
+}
+
+.nodes-connected {
+  display: none;
 }

@@ -17,6 +17,25 @@
 
 $(function () {
   // console.log('hello wisconsin');
+  var nodes = [];
+  
+  // nodes = [
+  //   {
+  //     id: 1,
+  //     title: '',
+  //     content: '',
+  //     type: '',
+  //     x: 123,
+  //     y: 123,
+  //     connections: []
+  //   },
+  //   {
+
+  //   },
+  //   {
+
+  //   }
+  // ];
   var el = null;
   var mousePosition = { 
     x: -1, 
@@ -72,15 +91,16 @@ $(function () {
       });
 
       // need to run AJAX call to update the position of the node in the database
-      $.ajax({
-        url: '/nodes/' + el.data("id"),
-        method: 'PUT',
-        datatype: 'json',
-        data: {
-          position_x: elPosition.x,
-          position_y: elPosition.y
-        }
-      });
+      // [_] create a save button to take care of this
+      // $.ajax({
+      //   url: '/nodes/' + el.data("id"),
+      //   method: 'PUT',
+      //   datatype: 'json',
+      //   data: {
+      //     position_x: elPosition.x,
+      //     position_y: elPosition.y
+      //   }
+      // });
 
       // console.log(
       //   'the element coordinates moved from { x: ' + mousePosition.last.x +
