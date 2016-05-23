@@ -3,8 +3,12 @@
   <% @nodes.each do |node| %>
     <div class="well nodes" id="node_<%= node.id %>" 
       data-id="<%= node.id %>"
+      data-title="<%= node.title %>"
+      data-content="<%= node.content %>"
+      data-type="<%= node.node_type %>"
       data-x="<%= node.position_x ? node.position_x : -1 %>" 
-      data-y="<%= node.position_y ? node.position_y : -1 %>">
+      data-y="<%= node.position_y ? node.position_y : -1 %>"
+      >
       <p class="node-header" alt='title' contenteditable='false'>
         <span class="node-title"><%= node.title %></span> [<span class="node-id"><%= node.id %></span>]
         <i class="fa fa-pencil"></i>

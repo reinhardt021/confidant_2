@@ -16,26 +16,6 @@
 //= require_tree .
 
 $(function () {
-  // console.log('hello wisconsin');
-  var nodes = [];
-  
-  // nodes = [
-  //   {
-  //     id: 1,
-  //     title: '',
-  //     content: '',
-  //     type: '',
-  //     x: 123,
-  //     y: 123,
-  //     connections: []
-  //   },
-  //   {
-
-  //   },
-  //   {
-
-  //   }
-  // ];
   var el = null;
   var mousePosition = { 
     x: -1, 
@@ -54,10 +34,19 @@ $(function () {
     }
   };
   var nodes = $('.nodes');
+  var ajaxNodes = [];
 
   for (var i = 0; i < nodes.length; i++) {
     var position_x = nodes[i].dataset.x;
     var position_y = nodes[i].dataset.y;
+    ajaxNodes.push({
+      id: nodes[i].dataset.id,
+      title: nodes[i].dataset.title,
+      content: nodes[i].dataset.content,
+      type: nodes[i].dataset.type,
+      x: nodes[i].dataset.x,
+      y: nodes[i].dataset.y
+    });
 
     if (position_x > 0 && position_y > 0) {
       $(nodes[i]).offset({ 
@@ -66,6 +55,11 @@ $(function () {
       });  
     }
   }
+
+  // console.log(ajaxNodes); 
+    // good that items are being stored here now
+    // can then update each one as you go and then send update as a json 
+    // one massive save
 
   // find a way to resize the div in order to change the size of the text inside of it
 
@@ -90,18 +84,6 @@ $(function () {
         top: elPosition.y 
       });
 
-      // need to run AJAX call to update the position of the node in the database
-      // [_] create a save button to take care of this
-      // $.ajax({
-      //   url: '/nodes/' + el.data("id"),
-      //   method: 'PUT',
-      //   datatype: 'json',
-      //   data: {
-      //     position_x: elPosition.x,
-      //     position_y: elPosition.y
-      //   }
-      // });
-
       // console.log(
       //   'the element coordinates moved from { x: ' + mousePosition.last.x +
       //   ', y: ' + mousePosition.last.y + 
@@ -118,6 +100,9 @@ $(function () {
 
     elPosition.x = position.left;
     elPosition.y = position.top;
+
+    // [_] update the ajaxNodes list as well
+      // that way can just save and send in a JSON
 
     console.log('data-x == '+ el.data("x") + 
       ' && data-y == ' + el.data("y")
@@ -148,6 +133,21 @@ $(function () {
   $('#add-node').on('click', function () {
     console.log('click works');
     $('#create-node').toggle();
+  });
+
+  $('#save-nodes').on('click', function () {
+    console.log('saving...not really yet lol');
+    // need to run AJAX call to update the position of the node in the database
+    // [_] create a save button to take care of this
+    // $.ajax({
+    //   url: '/nodes/' + el.data("id"),
+    //   method: 'PUT',
+    //   datatype: 'json',
+    //   data: {
+    //     position_x: elPosition.x,
+    //     position_y: elPosition.y
+    //   }
+    // });
   });
 
 });
