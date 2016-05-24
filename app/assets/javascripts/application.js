@@ -158,7 +158,9 @@ $(function () {
       url: '/nodes',
       method: 'PUT',
       datatype: 'json',
-      data: ajaxNodes
+      data: {
+        "ajaxNodes": ajaxNodes
+      }
     });
     console.log('ajax sent');
   });

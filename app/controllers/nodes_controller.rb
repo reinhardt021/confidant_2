@@ -15,8 +15,9 @@ class NodesController < ApplicationController
   end
 
   def update_all
-    puts ">>>>>> got to the update"
-    puts "need to check for payload"
+    puts ">>>> params[ajaxNodes] >>>>"
+    puts params["ajaxNodes"]
+
     # @node = Node.find(params[:id])
 
     # the following line appears to be unable to find the :node
