@@ -37,8 +37,10 @@ $(function () {
   var ajaxNodes = [];
 
   for (var i = 0; i < nodes.length; i++) {
-    var position_x = nodes[i].dataset.x;
-    var position_y = nodes[i].dataset.y;
+    var position_x = parseInt(nodes[i].dataset.x);
+    var position_y = parseInt(nodes[i].dataset.y);
+
+    // store node info into easy updated data structure for AJAX
     ajaxNodes.push({
       id: nodes[i].dataset.id,
       title: nodes[i].dataset.title,
@@ -48,7 +50,16 @@ $(function () {
       y: nodes[i].dataset.y
     });
 
+    // if (nodes[i].dataset.id == 10) {
+    //   console.log('got the right node');
+    //   console.log('nodes[i]: ', nodes[i]);
+    //   console.log('nodes[i].dataset: ', nodes[i].dataset);
+    //   console.log('nodes[i].dataset.x: ', nodes[i].dataset.x);
+    // }
+
     if (position_x > 0 && position_y > 0) {
+      console.log('position_x: ', parseInt(position_x));
+      console.log('position_y: ', parseInt(position_y));
       $(nodes[i]).offset({ 
         left: position_x,
         top:  position_y
@@ -103,6 +114,7 @@ $(function () {
 
     // [_] update the ajaxNodes list as well
       // that way can just save and send in a JSON
+    console.log(el);
 
     console.log('data-x == '+ el.data("x") + 
       ' && data-y == ' + el.data("y")
