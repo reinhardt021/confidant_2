@@ -34,32 +34,37 @@ $(function () {
     }
   };
   var nodes = $('.nodes');
-  var ajaxNodes = [];
+  var ajaxNodes = {};
 
   for (var i = 0; i < nodes.length; i++) {
     var position_x = parseInt(nodes[i].dataset.x);
     var position_y = parseInt(nodes[i].dataset.y);
 
+    // console.log(nodes[i].dataset);
     // store node info into easy updated data structure for AJAX
-    ajaxNodes.push({
+    ajaxNodes[nodes[i].dataset.id] = {
       id: nodes[i].dataset.id,
       title: nodes[i].dataset.title,
       content: nodes[i].dataset.content,
       type: nodes[i].dataset.type,
       x: nodes[i].dataset.x,
       y: nodes[i].dataset.y
-    });
+    };
+    // ajaxNodes.push({
+    //   id: nodes[i].dataset.id,
+    //   title: nodes[i].dataset.title,
+    //   content: nodes[i].dataset.content,
+    //   type: nodes[i].dataset.type,
+    //   x: nodes[i].dataset.x,
+    //   y: nodes[i].dataset.y
+    // });
 
-    // if (nodes[i].dataset.id == 10) {
-    //   console.log('got the right node');
-    //   console.log('nodes[i]: ', nodes[i]);
-    //   console.log('nodes[i].dataset: ', nodes[i].dataset);
-    //   console.log('nodes[i].dataset.x: ', nodes[i].dataset.x);
-    // }
 
+
+    // if the database holds a non-zero position then update display
     if (position_x > 0 && position_y > 0) {
-      console.log('position_x: ', parseInt(position_x));
-      console.log('position_y: ', parseInt(position_y));
+      // console.log('position_x: ', parseInt(position_x));
+      // console.log('position_y: ', parseInt(position_y));
       $(nodes[i]).offset({ 
         left: position_x,
         top:  position_y
@@ -67,7 +72,7 @@ $(function () {
     }
   }
 
-  // console.log(ajaxNodes); 
+  console.log(ajaxNodes); 
     // good that items are being stored here now
     // can then update each one as you go and then send update as a json 
     // one massive save
