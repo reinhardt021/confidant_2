@@ -14,10 +14,15 @@ class NodesController < ApplicationController
     end
   end
 
-  def update_all
-    puts ">>>> params[ajaxNodes] >>>>"
-    puts params["ajaxNodes"]
+  def destroy 
+    @node = Node.find(params[:id])
+    @node.destroy
 
+    flash[:notice] = "Node #{@node.id} deleted from database"
+    redirect_to root_path
+  end
+
+  def update_all
     updated = true
 
     params["ajaxNodes"].each do |key, node_data|
@@ -32,33 +37,9 @@ class NodesController < ApplicationController
       updated = false if !node.save
     end
 
-    puts Node.all
-    # {
-    #   "1"=>{
-    #     "id"=>"1", 
-    #     "title"=>"wake", 
-    #     "content"=>"slowly get out of bed", 
-    #     "type"=>"action", 
-    #     "x"=>"-1", 
-    #     "y"=>"-1"
-    #   }, ...
-    # }
-
-    # @node = Node.find(params[:id])
-
-    # the following line appears to be unable to find the :node
-    #  thought it was an issue of the validations which i commented out
-    #  still doesn't work and not sure why
-
     if updated
-    # if @node.update_attributes(node_params)
-    #   # might have to get rid of this is doing AJAX calls
-      # redirect_to root_path 
-      # redirect_to :action => :index
       redirect_to action: "index", status: 303
-      # redirect_to nodes_path, notice: "nodes were updated successfully!"
     else
-    #   # same here
       render :index
     end
   end
