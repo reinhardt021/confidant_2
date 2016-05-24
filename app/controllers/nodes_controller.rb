@@ -53,7 +53,9 @@ class NodesController < ApplicationController
     if updated
     # if @node.update_attributes(node_params)
     #   # might have to get rid of this is doing AJAX calls
-      redirect_to nodes_path
+      # redirect_to root_path 
+      # redirect_to :action => :index
+      redirect_to action: "index", status: 303
       # redirect_to nodes_path, notice: "nodes were updated successfully!"
     else
     #   # same here
