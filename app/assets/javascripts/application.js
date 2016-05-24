@@ -40,7 +40,6 @@ $(function () {
     var position_x = parseInt(nodes[i].dataset.x);
     var position_y = parseInt(nodes[i].dataset.y);
 
-    // console.log(nodes[i].dataset);
     // store node info into easy updated data structure for AJAX
     ajaxNodes[nodes[i].dataset.id] = {
       id: nodes[i].dataset.id,
@@ -50,16 +49,6 @@ $(function () {
       x: nodes[i].dataset.x,
       y: nodes[i].dataset.y
     };
-    // ajaxNodes.push({
-    //   id: nodes[i].dataset.id,
-    //   title: nodes[i].dataset.title,
-    //   content: nodes[i].dataset.content,
-    //   type: nodes[i].dataset.type,
-    //   x: nodes[i].dataset.x,
-    //   y: nodes[i].dataset.y
-    // });
-
-
 
     // if the database holds a non-zero position then update display
     if (position_x > 0 && position_y > 0) {
@@ -72,7 +61,7 @@ $(function () {
     }
   }
 
-  console.log(ajaxNodes); 
+  // console.log(ajaxNodes); 
     // good that items are being stored here now
     // can then update each one as you go and then send update as a json 
     // one massive save
@@ -100,6 +89,14 @@ $(function () {
         top: elPosition.y 
       });
 
+      // console.log(el.data("id"));
+      // update position of the right part of the ajaxNode
+      // console.log(ajaxNodes[el.data("id")]);
+      ajaxNodes[el.data("id")]["x"] = elPosition.x;
+      ajaxNodes[el.data("id")]["y"] = elPosition.y;
+      // console.log("x: " + ajaxNodes[el.data("id")]["x"]);
+      // console.log("y: " + ajaxNodes[el.data("id")]["y"]);
+
       // console.log(
       //   'the element coordinates moved from { x: ' + mousePosition.last.x +
       //   ', y: ' + mousePosition.last.y + 
@@ -119,11 +116,11 @@ $(function () {
 
     // [_] update the ajaxNodes list as well
       // that way can just save and send in a JSON
-    console.log(el);
+    // console.log(el);
 
-    console.log('data-x == '+ el.data("x") + 
-      ' && data-y == ' + el.data("y")
-    );
+    // console.log('data-x == '+ el.data("x") + 
+    //   ' && data-y == ' + el.data("y")
+    // );
 
     console.log('data-x > 0 >> ' + ( el.data("x") > 0 ));
     console.log('data-y > 0 >> ' + ( el.data("y") > 0 ));
@@ -145,10 +142,11 @@ $(function () {
     };
 
     el = null;
+    // console.log(ajaxNodes); // check to make sure ajaNodes updates
   });
 
   $('#add-node').on('click', function () {
-    console.log('click works');
+    // console.log('click works');
     $('#create-node').toggle();
   });
 
@@ -156,15 +154,13 @@ $(function () {
     console.log('saving...not really yet lol');
     // need to run AJAX call to update the position of the node in the database
     // [_] create a save button to take care of this
-    // $.ajax({
-    //   url: '/nodes/' + el.data("id"),
-    //   method: 'PUT',
-    //   datatype: 'json',
-    //   data: {
-    //     position_x: elPosition.x,
-    //     position_y: elPosition.y
-    //   }
-    // });
+    $.ajax({
+      url: '/nodes',
+      method: 'PUT',
+      datatype: 'json',
+      data: ajaxNodes
+    });
+    console.log('ajax sent');
   });
 
 });

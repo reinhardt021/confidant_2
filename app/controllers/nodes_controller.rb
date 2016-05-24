@@ -14,19 +14,22 @@ class NodesController < ApplicationController
     end
   end
 
-  def update
-    @node = Node.find(params[:id])
+  def update_all
+    puts ">>>>>> got to the update"
+    puts "need to check for payload"
+    # @node = Node.find(params[:id])
 
     # the following line appears to be unable to find the :node
     #  thought it was an issue of the validations which i commented out
     #  still doesn't work and not sure why
-    if @node.update_attributes(node_params)
-      # might have to get rid of this is doing AJAX calls
-      redirect_to nodes_path(@node), notice: "#{@node.title} was updated successfully!"
-    else
-      # same here
-      render :index
-    end
+
+    # if @node.update_attributes(node_params)
+    #   # might have to get rid of this is doing AJAX calls
+    #   redirect_to nodes_path(@node), notice: "#{@node.title} was updated successfully!"
+    # else
+    #   # same here
+    #   render :index
+    # end
   end
 
   protected

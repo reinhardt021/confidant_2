@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # resources :friends
   resources :users
   resources :nodes
+  put '/nodes' => 'nodes#update_all'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
